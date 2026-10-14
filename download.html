@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#130B0C">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/fonts/rozha-one-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/spectral-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <title>Download · She Who Is Nature</title>
+  <meta name="description" content="Download She Who Is Nature: Durga and Her Nine Forms, by Bibek Sharma Chapagain.">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://prakritirupa.vercel.app/download">
+</head>
+<body class="dl-page">
+  <header class="topbar">
+    <div class="wrap">
+      <a class="mark" href="/" lang="sa" aria-label="She Who Is Nature, home">प्रकृतिरूपा</a>
+      <nav class="topnav" aria-label="Sections"><a class="link" href="/">Back to the book</a></nav>
+    </div>
+  </header>
+  <main class="dl-hero">
+    <div class="wrap dl-grid">
+      <img class="dl-face" src="/img/hero-split-face.webp" width="1200" height="1805" alt="The split face of Kalaratri and Mahagauri from the book's cover">
+      <div class="dl-text">
+        <p class="eyebrow">She Who Is Nature</p>
+        <h1 id="dl-heading">Your copy is on its way.</h1>
+        <p class="dl-status" id="dl-status" role="status"><span class="spinner" aria-hidden="true"></span><span>Starting your download…</span></p>
+        <p id="dl-help">If nothing happens in a few seconds, use the button below. On a phone the book may open in a new tab, where you can save it or share it.</p>
+        <div class="actions">
+          <a class="btn btn-primary" id="dl-link" href="/she-who-is-nature.pdf" download="She-Who-Is-Nature-Bibek-Sharma-Chapagain.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>Download the PDF</a>
+          <a class="btn btn-ghost" href="https://buymeacoffee.com/bipashant" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"/><path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 3c0 1.5 1 1.5 1 3M12 3c0 1.5 1 1.5 1 3"/></svg>Buy me a coffee</a>
+        </div>
+        <p>If the book brings you something, a coffee helps me paint the next one. Thank you for reading.</p>
+        <p><a class="back" href="/">← Back to the book</a></p>
+      </div>
+    </div>
+  </main>
+  <script>
+  (function () {
+    var link = document.getElementById("dl-link");
+    var status = document.getElementById("dl-status");
+    var help = document.getElementById("dl-help");
+    function setStatus(text, done) {
+      status.innerHTML = (done ? "" : '<span class="spinner" aria-hidden="true"></span>') + "<span></span>";
+      status.lastChild.textContent = text;
+    }
+    // Check the file is there before starting, so a missing PDF never looks like a broken site.
+    fetch(link.getAttribute("href"), { method: "HEAD", cache: "no-store" }).then(function (r) {
+      if (!r.ok) throw new Error("missing");
+      setTimeout(function () {
+        link.click();
+        setStatus("Your download has started.", true);
+      }, 1200);
+    }).catch(function () {
+      setStatus("The PDF is being prepared. Please check back soon.", true);
+      document.getElementById("dl-heading").textContent = "Almost ready.";
+      help.textContent = "The book will be available to download here very soon.";
+      link.hidden = true;
+    });
+  })();
+  </script>
+</body>
+</html>
