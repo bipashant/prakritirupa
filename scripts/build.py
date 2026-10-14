@@ -265,6 +265,11 @@ index = f'''<!doctype html>
       <div class="edge edge-top" aria-hidden="true"></div>
       <div class="wrap">
         <div class="offer">
+          <div class="book3d">
+            <div class="book">
+              <span class="book-cover"><img src="/img/cover.webp" width="800" height="1200" loading="lazy" decoding="async" alt="The cover of She Who Is Nature: half Kalaratri in fire, half Mahagauri in pearls and jasmine, with the title in gold"></span>
+            </div>
+          </div>
           <div class="offer-main">
             <p class="eyebrow">Read it free</p>
             <h2 id="dl-title">Take her home with you.</h2>

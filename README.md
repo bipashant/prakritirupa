@@ -47,6 +47,7 @@ The free Hobby plan includes 50,000 events a month and keeps one month of histor
 | Look and layout | `styles.css` |
 | Story pop-up and hero embers | `main.js` |
 | Images | `img/` (WebP, 1000 × 1506) |
+| Book cover (the 3D book by the download offer) | `img/cover.webp` (WebP, 800 × 1200) |
 | Download filename and caching | `vercel.json` |
 
 Buy Me a Coffee: [buymeacoffee.com/bipashant](https://buymeacoffee.com/bipashant)

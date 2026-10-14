@@ -282,7 +282,66 @@ p { margin: 0; text-wrap: pretty; }
               radial-gradient(45% 55% at 85% 70%, rgba(245,239,227,.08), transparent 70%);
 }
 .offer { display: grid; gap: clamp(28px, 5vw, 64px); grid-template-columns: 1fr; align-items: start; }
-@media (min-width: 860px) { .offer { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); } }
+@media (min-width: 860px) {
+  .offer { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; }
+  .offer .support { /* the lamp card becomes a strip under the book and the offer */
+    grid-column: 1 / -1; align-items: center; column-gap: clamp(18px, 3vw, 32px); row-gap: 4px;
+    grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "icon title btn" "icon text btn";
+  }
+  .offer .support .diya { grid-area: icon; }
+  .offer .support h3 { grid-area: title; align-self: end; }
+  .offer .support p { grid-area: text; align-self: start; max-width: 68ch; }
+  .offer .support .btn { grid-area: btn; justify-self: end; }
+}
+
+/* the book itself, in 3D: front cover, page edges, back cover */
+.book3d {
+  --bw: min(58vw, 250px); --bt: calc(var(--bw) * .075);
+  position: relative; z-index: 0; display: grid; place-items: center;
+  padding: 8px 0 34px; perspective: 1500px;
+}
+@media (min-width: 860px) { .book3d { --bw: clamp(230px, 24vw, 300px); } }
+.book3d::before { /* ember light behind the book */
+  content: ""; position: absolute; z-index: -1; inset: -12% -8%; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(226,103,43,.30), rgba(163,31,26,.12) 55%, transparent);
+  filter: blur(10px);
+}
+.book3d::after { /* its shadow on the ground */
+  content: ""; position: absolute; z-index: -1; left: 50%; bottom: 12px; pointer-events: none;
+  width: calc(var(--bw) * 1.1); height: calc(var(--bw) * .12); transform: translateX(-46%);
+  background: radial-gradient(closest-side, rgba(0,0,0,.7), transparent); filter: blur(4px);
+}
+.book {
+  position: relative; width: var(--bw); aspect-ratio: 2 / 3;
+  transform-style: preserve-3d; transform: rotateY(-26deg) rotateX(2deg);
+  transition: transform .9s cubic-bezier(.2,.7,.2,1);
+}
+@media (hover: hover) { .book:hover { transform: rotateY(-10deg); } }
+.book-cover {
+  position: absolute; inset: 0; overflow: hidden; border-radius: 2px 5px 5px 2px;
+  transform: translateZ(calc(var(--bt) / 2));
+}
+.book-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.book-cover::after { /* hinge crease by the spine, and a soft sheen */
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.45) 0, rgba(255,255,255,.14) 1.6%, rgba(0,0,0,.28) 3%, rgba(255,255,255,.06) 4.6%, transparent 7%),
+    linear-gradient(115deg, transparent 35%, rgba(255,255,255,.07) 48%, transparent 60%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.07);
+}
+.book::before { /* page edges */
+  content: ""; position: absolute; top: 1.2%; bottom: 1.2%; left: 0; width: var(--bt);
+  transform: translateX(calc(var(--bw) - var(--bt) / 2 - 3px)) rotateY(90deg);
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.25), transparent 25%, transparent 75%, rgba(0,0,0,.3)),
+    repeating-linear-gradient(90deg, #f1e8d4 0 1px, #d9cbac 1px 2px);
+}
+.book::after { /* back cover, which also casts the drop shadow */
+  content: ""; position: absolute; inset: 0; border-radius: 2px 5px 5px 2px;
+  transform: translateZ(calc(var(--bt) / -2));
+  background: #1b0f0d; box-shadow: -18px 22px 50px rgba(0,0,0,.55), 0 0 0 1px rgba(201,160,74,.12);
+}
+@media (prefers-reduced-motion: reduce) { .book { transition: none; } }
 .offer h2 { font-size: var(--t-2xl); color: var(--pearl); }
 .offer-main { display: grid; gap: 18px; min-width: 0; }
 .offer-main p { color: rgba(245,239,227,.82); max-width: 52ch; }
