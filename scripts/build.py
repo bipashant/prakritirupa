@@ -10,75 +10,75 @@ BMC = "https://buymeacoffee.com/bipashant"
 FORMS = [
     dict(slug="shailaputri", night="१", day="Night 1", name="Shailaputri", deva="शैलपुत्री",
          essence="Daughter of the mountain, steady as stone.",
-         attrs="Rides a white bull · holds a trident and a lotus",
-         story=["In an earlier life she was Sati, who gave up her body in the fire of her father's sacrifice. She was born again as the daughter of Himavan, king of the Himalaya, and so she is called Shailaputri, the mountain's daughter.",
-                "The nine nights begin with her, because every journey needs firm ground under it."],
+         attrs="Rides a white bull · holds a trident and a lotus · a half-moon in her hair",
+         story=["In an earlier life she was Sati. When her father, King Daksha, mocked Shiva in front of everyone at his great sacred fire, she let her body go. She was born again to Himavat, king of the Himalaya, and his queen Mena, who named her Parvati, the mountain's daughter.",
+                "She has already lost everything once, and she has come back smiling. The nine forms begin with her: with a mountain, and a return."],
          mantra="ॐ देवी शैलपुत्र्यै नमः", translit="Om Devi Shailaputryai Namah",
          meaning="Om, I bow to the Goddess Shailaputri."),
     dict(slug="brahmacharini", night="२", day="Night 2", name="Brahmacharini", deva="ब्रह्मचारिणी",
-         essence="She who walks the long path with patience.",
+         essence="She who walks the path of discipline.",
          attrs="Walks barefoot · holds prayer beads and a water pot",
-         story=["To win Shiva as her husband, the young Parvati gave up every comfort and lived in the forest for years, first on fruit, then on leaves, and at last on nothing at all.",
-                "Brahmacharini is that steady, quiet devotion. She carries no weapon, only her prayer beads and a little water."],
+         story=["Shiva was still grieving for Sati and noticed no one, so the young Parvati set out to become as strong in spirit as he was. She sat between fires in summer and stood in icy water on winter nights. She ate only fruit, then fallen leaves, then not even leaves, and people called her Aparna, “the one without even a leaf.”",
+                "At last a young student came to mock Shiva, and she angrily sent him away. He smiled and showed his true face. It was Shiva himself: “From today, I am yours.”"],
          mantra="ॐ देवी ब्रह्मचारिण्यै नमः", translit="Om Devi Brahmacharinyai Namah",
          meaning="Om, I bow to the Goddess Brahmacharini."),
     dict(slug="chandraghanta", night="३", day="Night 3", name="Chandraghanta", deva="चन्द्रघण्टा",
          essence="Grace that is ready for battle.",
          attrs="Rides a lion · ten arms · a bell-shaped half-moon on her brow",
-         story=["After she married Shiva, she wore a crescent moon on her forehead shaped like a temple bell, and that is where her name comes from.",
-                "She is calm and lovely to look at, yet every one of her ten hands is ready. The sound of her bell is said to drive fear away."],
+         story=["Her name means “moon bell,” for the bell-shaped half-moon on her forehead. No old story carries her name, so the tales told about her are newer ones. In one, Shiva arrives at the wedding with ghosts and wild hermits, and Parvati's mother faints. Parvati takes this fierce form on her lion and stands between her family and the wedding party until Shiva agrees to come as a bridegroom should.",
+                "In another, the ring of her moon bell scatters an army of giant bats. Her face stays calm, almost gentle. She is ready for battle; she just isn't angry about it."],
          mantra="ॐ देवी चन्द्रघण्टायै नमः", translit="Om Devi Chandraghantayai Namah",
          meaning="Om, I bow to the Goddess Chandraghanta."),
     dict(slug="kushmanda", night="४", day="Night 4", name="Kushmanda", deva="कूष्माण्डा",
          essence="Her smile lit the first light of the universe.",
          attrs="Rides a tiger · eight arms · lives at the heart of the sun",
-         story=["Before anything existed there was only darkness. Then she smiled, and the whole universe came out of that smile like light out of a seed.",
-                "She is said to live inside the sun itself. The warmth we feel each morning is hers."],
+         story=["Her name is often read as ku, little, ushma, warmth, and anda, egg: the little warm egg the whole universe grew from. Before anything existed there was only darkness. Then she smiled, and the light of that smile broke the warm egg of the world open into stars and planets and suns.",
+                "Ever since, they say, she has lived at the heart of the sun. When the sun warms your face on a cold morning, you could think of it as her smile, still reaching you."],
          mantra="ॐ देवी कूष्माण्डायै नमः", translit="Om Devi Kushmandayai Namah",
          meaning="Om, I bow to the Goddess Kushmanda."),
     dict(slug="skandamata", night="५", day="Night 5", name="Skandamata", deva="स्कन्दमाता",
          essence="A mother holding the young warrior in her lap.",
-         attrs="Sits on a lotus · holds baby Skanda and two lotus flowers",
-         story=["Her son Skanda, also called Kartikeya, grew up to lead the army of the gods. Here he is still a child with six small faces, sitting safely in his mother's lap.",
-                "She reminds us that great strength often begins with a mother's care."],
+         attrs="Sits on a lotus · a lion resting beside her · holds baby Skanda and two lotus flowers",
+         story=["Only a son of Shiva could defeat the demon Taraka. That son, Skanda, also called Kartikeya or Murugan, was carried into the world by fire, by the river Ganga and by six star-maidens, the Pleiades, and grew six faces to drink from all six. Then Parvati lifted him onto her lap and fed him as her own.",
+                "When he was grown, she gave him a spear called Shakti, her own power in the shape of a weapon, and with it he set the heavens free. She gave him more than milk. She gave him her strength."],
          mantra="ॐ देवी स्कन्दमातायै नमः", translit="Om Devi Skandamatayai Namah",
          meaning="Om, I bow to the Goddess Skandamata."),
     dict(slug="katyayani", night="६", day="Night 6", name="Katyayani", deva="कात्यायनी",
          essence="Courage that answers in a single leap.",
-         attrs="Rides a lion · holds a sword and a lotus",
-         story=["She was born in the hermitage of the sage Katyayana, who had prayed for years that the Goddess would come to him as his daughter.",
-                "Old stories tell of the young women of Vrindavan bathing in the Yamuna at dawn and praying to her. She is quick, fearless, and close to anyone who calls on her."],
+         attrs="Rides a lion · holds a crescent sword and a lotus",
+         story=["Her name means “daughter of Katyayana,” a wise old hermit. Some say she appeared in his forest home; others say she took his name because he was the first to pray to her. In one telling she is the goddess born from the gods' anger. When the buffalo demon asked to marry her, she told him to beat her in battle first, then leapt from her lion onto his back and struck him down.",
+                "Her other story is gentler. In a village by the river Yamuna, girls in love with Krishna bathed in the cold river before dawn for a whole month and prayed to her to make him their husband. Young women still pray to her when they hope to find the right person to marry."],
          mantra="ॐ देवी कात्यायन्यै नमः", translit="Om Devi Katyayanyai Namah",
          meaning="Om, I bow to the Goddess Katyayani."),
     dict(slug="kalaratri", night="७", day="Night 7", name="Kalaratri", deva="कालरात्रि",
          essence="The darkest night, which swallows fear.",
          attrs="Rides a donkey · dark skin, wild hair, fire in her breath",
-         story=["Kalaratri means the dark night of time. She is the fiercest of the nine, with flames for breath and nothing soft about her.",
-                "Yet she is also called Shubhankari, the one who brings good, because all of her darkness is turned against what frightens us."],
+         story=["Kala means both black and time, and ratri means night, so she is the Black Night, the Night of Time. She is the form people fear most, and she means to be. In a story long told about her, she drinks every drop of the demon Raktabija's blood before it can touch the ground and rise up as another demon.",
+                "Yet she is also called Shubhankari, “the one who brings good.” Two of her four hands bless and say “don't be afraid.” She never harms those who come to her. She only frightens the things that frighten them."],
          mantra="ॐ देवी कालरात्र्यै नमः", translit="Om Devi Kalaratryai Namah",
          meaning="Om, I bow to the Goddess Kalaratri."),
     dict(slug="mahagauri", night="८", day="Night 8", name="Mahagauri", deva="महागौरी",
          essence="Pure white light after the long penance.",
          attrs="Rides a white bull · holds a trident and a small drum",
-         story=["After her years of penance, Parvati's skin was dark with dust and sun. Shiva washed her in the waters of the Ganga, and she shone as white as the moon and jasmine.",
-                "Mahagauri is the calm after the storm, gentle and quick to forgive."],
+         story=["Three stories tell how she became so bright, and they don't agree. The one most people tell today is the simplest: after years of hard practice in the sun, rain and dust, Parvati's body had turned dark. When Shiva finally accepted her, he washed her with water from the river Ganga, and her skin shone white as lightning.",
+                "She comes after the long dark of Kalaratri and feels like rest, like the first clear morning after the rains, when everything looks new."],
          mantra="ॐ देवी महागौर्यै नमः", translit="Om Devi Mahagauryai Namah",
          meaning="Om, I bow to the Goddess Mahagauri."),
     dict(slug="siddhidatri", night="९", day="Night 9", name="Siddhidatri", deva="सिद्धिदात्री",
-         essence="She who gives everything that is complete.",
-         attrs="Sits on a lotus · holds a discus, conch, mace and lotus",
-         story=["A siddhi is a perfect power, and she is the one who grants them. Gods, sages and even demons bow before her.",
-                "It is said that Shiva himself received his powers from her, and that half of his body became hers. With her, the nine nights are complete."],
+         essence="She who gives every gift away.",
+         attrs="Sits on a lotus · a lion beside her · holds a discus, conch, mace and lotus",
+         story=["A siddhi is a perfection, a mastery that comes after long practice. She holds them all and gives them away. Sages, heavenly musicians, forest spirits and even demons gather around her with folded hands, and nobody is turned away.",
+                "When Shiva asked her for the power to create, she gave him every gift she had, and then became half of him. That is Ardhanarishvara, “the lord who is half woman.” With her, the nine nights are complete."],
          mantra="ॐ देवी सिद्धिदात्र्यै नमः", translit="Om Devi Siddhidatryai Namah",
          meaning="Om, I bow to the Goddess Siddhidatri."),
 ]
 TENTH = dict(slug="mahishasuramardini", night="१०", day="Day 10 · Vijaya Dashami", name="Mahishasuramardini", deva="महिषासुरमर्दिनी",
          essence="The victory of the tenth day.",
          attrs="Rides a lion · ten arms · strikes down the buffalo demon",
-         story=["For nine days and nights she fought Mahishasura, a demon who could change from buffalo to man and back again. On the tenth day she struck him down while the gods showered her with flowers.",
-                "That day is Vijaya Dashami, the day of victory, and the great day of Dashain."],
-         mantra="ॐ महिषासुरमर्दिन्यै नमः", translit="Om Mahishasuramardinyai Namah",
-         meaning="Om, I bow to her who defeated Mahishasura.")
+         story=["Mahishasura could become anything: a buffalo, a lion, a man with a sword, an elephant. She did not chase every shape. She held him still, and when his true face came crawling half out of the buffalo, she ended it, while flowers fell from the clouds.",
+                "That victory is celebrated on the tenth day, Vijaya Dashami, the great day of Dashain. Before she left, she made a promise: whenever you need me, call, and I will come."],
+         mantra="ॐ दुं दुर्गायै नमः", translit="Om Dum Durgayai Namah",
+         meaning="Om, Dum, I bow to Durga. Dum is a seed syllable, a sacred sound that carries her power.")
 
 e = html.escape
 
@@ -124,7 +124,7 @@ head_common = f'''<meta charset="utf-8">
   <link rel="stylesheet" href="/styles.css">
   {VA}'''
 
-DESC = "An illustrated book by Bibek Sharma Chapagain on Durga, the Mother Goddess as nature, and the forms she takes across the nine nights of Navaratri and Dashain. Paintings, stories and Sanskrit mantras with meaning."
+DESC = "An illustrated book by Bibek Sharma Chapagain on Durga, the Mother Goddess as nature, and the forms she takes across the nine nights of Navaratri and Dashain. Images, stories and Sanskrit mantras with meaning."
 
 index = f'''<!doctype html>
 <html lang="en">
@@ -176,7 +176,7 @@ index = f'''<!doctype html>
             <a class="btn btn-ghost" href="{BMC}" target="_blank" rel="noopener">{ICON_CUP}Buy me a coffee</a>
           </div>
           <ul class="hero-facts">
-            <li>12 illustrated chapters</li>
+            <li>14 chapters</li>
             <li>Sanskrit mantras with meaning</li>
             <li>Free PDF</li>
           </ul>
@@ -201,13 +201,13 @@ index = f'''<!doctype html>
           <img src="/img/prakriti.webp" width="1000" height="1506" loading="lazy" decoding="async" alt="Durga as nature herself: her hair becomes a forested mountain, her sari flows into a river, and terraced mustard fields and a village lie at her feet">
         </div>
         <div class="feature-text">
-          <p class="eyebrow">Chapter 1 · The Mother who is nature</p>
+          <p class="eyebrow">Chapter 1 · She Who Is Nature</p>
           <h2 id="inside-title">The mountain, the river, the field in flower. All of it is her.</h2>
           <p><em>She Who Is Nature</em> tells the story of Durga, the great Mother Goddess, and the forms she takes during the nine nights of Navaratri, celebrated in Nepal as Dashain. In this telling she lives close by, as Prakriti, nature itself: the ground under our feet, the rain and the fire, and the quiet strength inside every living thing.</p>
-          <p>Each chapter brings one of her forms to life with a story, a full painting, and her mantra in Sanskrit with simple pronunciation and meaning. You don't need to know anything about Hindu tradition to enjoy it.</p>
+          <p>Each chapter brings one of her forms to life with a story, an image of her, and her mantra in Sanskrit with simple pronunciation and meaning. You don't need to know anything about Hindu tradition to enjoy it.</p>
           <ul class="inside" aria-label="Inside the book">
-            <li><strong>12 illustrated chapters</strong><span>From the birth of the Goddess to her victory on the tenth day.</span></li>
-            <li><strong>A painting for every form</strong><span>Rich, oil-style portraits in the spirit of Raja Ravi Varma.</span></li>
+            <li><strong>14 chapters</strong><span>From nature herself to her victory on the tenth day, and the old hymn that finds her in all beings.</span></li>
+            <li><strong>An image for every form</strong><span>AI-generated visuals full of her old signs, with a short guide at the back to reading them.</span></li>
             <li><strong>Mantras you can say aloud</strong><span>Each in Sanskrit, with easy pronunciation and a plain English meaning.</span></li>
             <li><strong>Written for everyone</strong><span>Simple words, no background needed, and sources listed at the back.</span></li>
           </ul>
@@ -218,13 +218,13 @@ index = f'''<!doctype html>
     <section class="feature flip" aria-labelledby="origin-title">
       <div class="wrap">
         <div class="feature-art">
-          <img src="/img/origin.webp" width="1000" height="1506" loading="lazy" decoding="async" alt="The gods stand in a circle on a dark mountain as streams of golden light pour from them and join into the ten-armed form of Durga">
+          <img src="/img/origin.webp" width="1000" height="1506" loading="lazy" decoding="async" alt="The gods stand in a circle on a dark mountain as streams of golden light pour from them and join into the many-armed, fiery form of Durga">
         </div>
         <div class="feature-text">
-          <p class="eyebrow">Chapter 2 · Born of light</p>
+          <p class="eyebrow">Chapter 2 · A Mountain of Fire Becomes a Woman</p>
           <h2 id="origin-title">When the gods had nothing left, their light became her.</h2>
-          <p>A buffalo demon named Mahishasura had won a promise that no man or god could kill him. He seized heaven and drove the gods out. In their anger, light poured from Brahma, Vishnu, Shiva and all the others, and the streams of light met and became one blaze.</p>
-          <p>Out of that blaze stepped a woman with ten arms. Each god placed his own weapon in her hands, and she smiled.</p>
+          <p>After a war of a hundred years, the buffalo demon Mahishasura threw Indra off the throne of heaven and drove the gods out to wander the earth. When Vishnu and Shiva heard, their faces darkened with anger. A great light poured from Vishnu's face, then from Brahma, from Shiva and from everyone there, and it all flowed together like rivers running to the sea.</p>
+          <p>The light became a mountain of fire, and slowly the fire took a woman's shape. Shiva gave her a trident, Vishnu a discus, Indra his thunderbolt, and the king of the mountains a lion. She laughed, and the mountains shook.</p>
           <p class="note">This story comes from the Devi Mahatmya, an old Sanskrit poem still recited during Dashain.</p>
         </div>
       </div>
@@ -235,7 +235,7 @@ index = f'''<!doctype html>
         <div class="section-head">
           <p class="eyebrow">Navaratri · nine nights</p>
           <h2 id="nights-title">Nine nights, nine forms</h2>
-          <p>On each night of Navaratri one form of Durga is honoured, from the daughter of the mountain to the giver of every power. Tap a painting to read her story and her mantra.</p>
+          <p>Her nine names come from a short old prayer, the Devi Kavacham, said to have been spoken by Brahma himself. Over the nine nights of Navaratri they are honoured one at a time, like lamps lit one after another, from the daughter of the mountain to the giver of every gift. Tap an image to read her story and her mantra.</p>
         </div>
         <div class="grid">{"".join(cards)}
         </div>
@@ -245,7 +245,7 @@ index = f'''<!doctype html>
     <section class="feature tenth" id="{TENTH["slug"]}" data-index="9" aria-labelledby="tenth-title">
       <div class="wrap">
         <div class="feature-art">
-          <img src="/img/{TENTH["slug"]}.webp" width="1000" height="1506" loading="lazy" decoding="async" alt="Durga on her lion drives her trident into the buffalo demon as Mahishasura emerges from its mouth, while the gods shower flowers from the clouds">
+          <img src="/img/{TENTH["slug"]}.webp" width="1000" height="1506" loading="lazy" decoding="async" alt="Durga stands on the buffalo demon and drives her trident into it as Mahishasura crawls out of its mouth, her lion biting its back, while flowers fall from the clouds">
         </div>
         <div class="feature-text">
           <p class="eyebrow">The tenth day · Vijaya Dashami</p>
@@ -271,13 +271,13 @@ index = f'''<!doctype html>
             <p>Download the full book as a PDF and keep it on your phone, tablet or computer. Read it during Dashain, share it with family, send it to a friend who has always wondered who Durga is.</p>
             <div class="actions">
               <a class="btn btn-primary" href="/download">{ICON_DL}Download the PDF</a>
-              <span class="small">12 chapters · paintings · mantras</span>
+              <span class="small">14 chapters · images · mantras</span>
             </div>
           </div>
           <aside class="support" aria-labelledby="support-title">
             {DIYA}
             <h3 id="support-title">Keep the lamp lit</h3>
-            <p>Every painting in this book took many hours. If it brought you a little closer to her, you can buy me a coffee. It helps me make the next one.</p>
+            <p>These stories have been passed down for thousands of years, and I wanted to learn them and share them freely. If this book brought you a little closer to her, you can buy me a coffee. It helps me make the next one.</p>
             <a class="btn btn-ghost" href="{BMC}" target="_blank" rel="noopener">{ICON_CUP}Buy me a coffee</a>
           </aside>
         </div>
@@ -338,7 +338,7 @@ download = f'''<!doctype html>
           <a class="btn btn-primary" id="dl-link" href="/she-who-is-nature.pdf" download="She-Who-Is-Nature-Bibek-Sharma-Chapagain.pdf">{ICON_DL}Download the PDF</a>
           <a class="btn btn-ghost" href="{BMC}" target="_blank" rel="noopener">{ICON_CUP}Buy me a coffee</a>
         </div>
-        <p>If the book brings you something, a coffee helps me paint the next one. Thank you for reading.</p>
+        <p>If the book brings you something, a coffee helps me make the next one. Thank you for reading.</p>
         <p><a class="back" href="/">← Back to the book</a></p>
       </div>
     </div>

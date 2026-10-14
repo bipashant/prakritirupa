@@ -1,8 +1,8 @@
 /* ------------------------------------------------------------------
    She Who Is Nature — site styles
    Layout: a night-dark hero split ember | pearl like the book cover,
-   opening onto deckled parchment pages where each painting dissolves
-   into the same paper it was painted on.
+   opening onto deckled parchment pages where each image dissolves
+   into the same paper it sits on.
 ------------------------------------------------------------------- */
 
 @font-face { font-family: "Rozha One"; font-style: normal; font-weight: 400; font-display: swap;
@@ -34,7 +34,7 @@
   unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
 
 :root {
-  /* palette: the cover's two halves + the paintings' paper */
+  /* palette: the cover's two halves + the images' paper */
   --night: #130B0C;          /* Kalaratri's night */
   --night-2: #21120F;
   --ember: #E2672B;          /* her fire */
@@ -43,7 +43,7 @@
   --gold: #C9A04A;           /* crown and mandala gold */
   --gold-soft: #E3C988;
   --pearl: #F5EFE3;          /* Mahagauri's pearls */
-  --paper: #EFE5CF;          /* the exact paper the paintings sit on */
+  --paper: #EFE5CF;          /* the exact paper the images sit on */
   --paper-deep: #E5D6B4;
   --ink: #2B1B13;
   --ink-soft: #5E4737;
@@ -171,14 +171,28 @@ p { margin: 0; text-wrap: pretty; }
   /* on laptops keep the title and buttons inside the first screen */
   @media (min-width: 700px) { .hero-inner { --face-w: clamp(300px, min(44vw, (100svh - 300px) * 0.665), 590px); } }
 }
+.hero-face, .dl-face { /* the cover is cropped at both sides: dissolve the edges into the night */
+  --face-fade:
+    radial-gradient(50% 72% at 50% 50%, #000 67%, rgba(0,0,0,.8) 77%, rgba(0,0,0,.45) 88%, rgba(0,0,0,.14) 95%, transparent 100%),
+    radial-gradient(26% 22% at 98% 80%, transparent 35%, #000 100%), /* hides cut-out flecks on the saree */
+    linear-gradient(to bottom, #000 62%, rgba(0,0,0,.55) 78%, transparent 94%);
+}
 .hero-face {
+  position: relative; z-index: 0;
   width: var(--face-w);
   aspect-ratio: 1200 / 1805; max-width: 100%;
-  -webkit-mask-image: linear-gradient(to bottom, #000 62%, rgba(0,0,0,.55) 78%, transparent 94%);
-          mask-image: linear-gradient(to bottom, #000 62%, rgba(0,0,0,.55) 78%, transparent 94%);
   animation: rise 1.4s cubic-bezier(.2,.7,.2,1) both;
 }
-.hero-face img { width: 100%; height: 100%; object-fit: contain; }
+.hero-face::before { /* her fire keeps glowing where the image fades out */
+  content: ""; position: absolute; z-index: -1; inset: 22% 46% 16% -18%; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(226,103,43,.36), rgba(163,31,26,.18) 58%, transparent);
+  filter: blur(22px);
+}
+.hero-face img {
+  width: 100%; height: 100%; object-fit: contain;
+  -webkit-mask-image: var(--face-fade); -webkit-mask-composite: source-in;
+          mask-image: var(--face-fade);         mask-composite: intersect;
+}
 @keyframes rise { from { opacity: .6; transform: translateY(14px) scale(1.015); } to { opacity: 1; transform: none; } }
 .hero-copy { margin-top: calc(var(--face-w) * -0.3); position: relative; display: grid; justify-items: center; gap: 14px; }
 .hero-copy .eyebrow { color: var(--gold); }
@@ -332,7 +346,7 @@ dialog.viewer::backdrop { background: rgba(19, 11, 12, .82); backdrop-filter: bl
 .dl-grid { display: grid; gap: clamp(28px, 5vw, 64px); align-items: center; grid-template-columns: 1fr; }
 @media (min-width: 820px) { .dl-grid { grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); } }
 .dl-face { width: min(380px, 70vw); height: auto; justify-self: center;
-  -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 96%); mask-image: linear-gradient(to bottom, #000 60%, transparent 96%); }
+  -webkit-mask-image: var(--face-fade); -webkit-mask-composite: source-in; mask-image: var(--face-fade); mask-composite: intersect; }
 .dl-text { display: grid; gap: 18px; min-width: 0; }
 .dl-text h1 { font-size: var(--t-2xl); color: var(--pearl); }
 .dl-text p { color: rgba(245,239,227,.82); max-width: 50ch; }

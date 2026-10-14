@@ -46,7 +46,7 @@ The free Hobby plan includes 50,000 events a month and keeps one month of histor
 | Page text, the nine forms, mantras | `scripts/build.py`, then run `python3 scripts/build.py` |
 | Look and layout | `styles.css` |
 | Story pop-up and hero embers | `main.js` |
-| Paintings | `img/` (WebP, 1000 × 1506) |
+| Images | `img/` (WebP, 1000 × 1506) |
 | Download filename and caching | `vercel.json` |
 
 Buy Me a Coffee: [buymeacoffee.com/bipashant](https://buymeacoffee.com/bipashant)
