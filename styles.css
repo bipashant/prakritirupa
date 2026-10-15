@@ -416,3 +416,5 @@ dialog.viewer::backdrop { background: rgba(19, 11, 12, .82); backdrop-filter: bl
 @media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
 .dl-text .actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .dl-text .back { font-size: var(--t-sm); color: rgba(245,239,227,.7); }
+.dl-text .kindle { color: var(--gold-soft); text-underline-offset: 3px; }
+.dl-text .kindle:hover { color: var(--pearl); }

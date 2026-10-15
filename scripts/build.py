@@ -6,6 +6,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SITE_URL = "https://prakritirupa.vercel.app"
 BMC = "https://buymeacoffee.com/bipashant"
+KINDLE = "https://www.amazon.com/dp/B0HN3JPRBT"
 
 FORMS = [
     dict(slug="shailaputri", night="१", day="Night 1", name="Shailaputri", deva="शैलपुत्री",
@@ -109,6 +110,7 @@ for i, f in enumerate(FORMS):
 
 ICON_DL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>'
 ICON_CUP = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"/><path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 3c0 1.5 1 1.5 1 3M12 3c0 1.5 1 1.5 1 3"/></svg>'
+ICON_KINDLE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2.5" width="14" height="19" rx="2"/><path d="M8.5 7h7M8.5 10.5h7M8.5 14h4"/></svg>'
 LOTUS_RULE = '<svg class="lotus-rule" viewBox="0 0 120 18" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M0 9h42M78 9h42"/><path d="M60 2c4 4 5 7 5 9s-2 4-5 5c-3-1-5-3-5-5s1-5 5-9z"/><path d="M52 7c-1 4 1 7 8 9M68 7c1 4-1 7-8 9"/><circle cx="60" cy="10" r="1.4" fill="currentColor"/></svg>'
 DIYA = '<svg class="diya" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6c3 4 4 7 4 9.5a4 4 0 0 1-8 0C20 13 21 10 24 6z" fill="currentColor" fill-opacity=".25"/><path d="M6 26c4 0 7 1 10 2.5 3 1.5 13 1.5 16 0 3-1.5 6-2.5 10-2.5-2 8-9 13-18 13S8 34 6 26z"/><path d="M18 42h12"/></svg>'
 
@@ -143,7 +145,7 @@ index = f'''<!doctype html>
   <meta property="og:image:alt" content="The cover face of She Who Is Nature: half Kalaratri in fire, half Mahagauri in pearls">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preload" href="/img/hero-split-face.webp" as="image" type="image/webp">
-  <script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@type":"Book","name":"She Who Is Nature","alternateName":"प्रकृतिरूपा","description":DESC,"author":{"@type":"Person","name":"Bibek Sharma Chapagain"},"illustrator":{"@type":"Person","name":"Bibek Sharma Chapagain"},"inLanguage":"en","image":SITE_URL+"/img/og.jpg","url":SITE_URL+"/"}, ensure_ascii=False)}</script>
+  <script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@type":"Book","name":"She Who Is Nature","alternateName":"प्रकृतिरूपा","description":DESC,"author":{"@type":"Person","name":"Bibek Sharma Chapagain"},"illustrator":{"@type":"Person","name":"Bibek Sharma Chapagain"},"inLanguage":"en","image":SITE_URL+"/img/og.jpg","url":SITE_URL+"/","workExample":{"@type":"Book","name":"She Who Is Nature (Kindle edition)","bookFormat":"https://schema.org/EBook","url":KINDLE}}, ensure_ascii=False)}</script>
 </head>
 <body>
   <header class="topbar">
@@ -173,7 +175,7 @@ index = f'''<!doctype html>
           <p class="by">By Bibek Sharma Chapagain</p>
           <div class="hero-cta">
             <a class="btn btn-primary" href="/download">{ICON_DL}Download the book</a>
-            <a class="btn btn-ghost" href="{BMC}" target="_blank" rel="noopener">{ICON_CUP}Buy me a coffee</a>
+            <a class="btn btn-ghost" href="{KINDLE}" target="_blank" rel="noopener">{ICON_KINDLE}Get it on Kindle</a>
           </div>
           <ul class="hero-facts">
             <li>14 chapters</li>
@@ -273,11 +275,12 @@ index = f'''<!doctype html>
           <div class="offer-main">
             <p class="eyebrow">Read it free</p>
             <h2 id="dl-title">Take her home with you.</h2>
-            <p>Download the full book as a PDF and keep it on your phone, tablet or computer. Read it during Dashain, share it with family, send it to a friend who has always wondered who Durga is.</p>
+            <p>Download the full book as a PDF and keep it on your phone, tablet or computer. Read it during Dashain, share it with family, send it to a friend who has always wondered who Durga is. Reading on a Kindle? It's on Amazon too.</p>
             <div class="actions">
               <a class="btn btn-primary" href="/download">{ICON_DL}Download the PDF</a>
-              <span class="small">14 chapters · images · mantras</span>
+              <a class="btn btn-ghost" href="{KINDLE}" target="_blank" rel="noopener">{ICON_KINDLE}Get it on Kindle</a>
             </div>
+            <span class="small">14 chapters · images · mantras</span>
           </div>
           <aside class="support" aria-labelledby="support-title">
             {DIYA}
@@ -343,6 +346,7 @@ download = f'''<!doctype html>
           <a class="btn btn-primary" id="dl-link" href="/she-who-is-nature.pdf" download="She-Who-Is-Nature-Bibek-Sharma-Chapagain.pdf">{ICON_DL}Download the PDF</a>
           <a class="btn btn-ghost" href="{BMC}" target="_blank" rel="noopener">{ICON_CUP}Buy me a coffee</a>
         </div>
+        <p>Reading on a Kindle? <a class="kindle" href="{KINDLE}" target="_blank" rel="noopener">Get the Kindle edition on Amazon.</a></p>
         <p>If the book brings you something, a coffee helps me make the next one. Thank you for reading.</p>
         <p><a class="back" href="/">← Back to the book</a></p>
       </div>
