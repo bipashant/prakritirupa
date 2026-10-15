@@ -7,6 +7,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE_URL = "https://prakritirupa.vercel.app"
 BMC = "https://buymeacoffee.com/bipashant"
 KINDLE = "https://www.amazon.com/dp/B0HN3JPRBT"
+# Kindle books are sold per country store: a reader must use the store that matches their Amazon account.
+KINDLE_STORES = [
+    ("United States", "Amazon.com", "https://www.amazon.com/dp/B0HN3JPRBT"),
+    ("Australia", "Amazon.com.au", "https://www.amazon.com.au/dp/B0HN3JPRBT"),
+]
 
 FORMS = [
     dict(slug="shailaputri", night="१", day="Night 1", name="Shailaputri", deva="शैलपुत्री",
@@ -177,7 +182,7 @@ index = f'''<!doctype html>
           <p class="by">By Bibek Sharma Chapagain</p>
           <div class="hero-cta">
             <a class="btn btn-primary" href="/download">{ICON_DL}Download the book</a>
-            <a class="btn btn-ghost" href="{KINDLE}" target="_blank" rel="noopener">{ICON_KINDLE}Get it on Kindle</a>
+            <a class="btn btn-ghost" href="/kindle">{ICON_KINDLE}Get it on Kindle</a>
           </div>
           <ul class="hero-facts">
             <li>14 chapters</li>
@@ -280,7 +285,7 @@ index = f'''<!doctype html>
             <p>Download the full book as a PDF and keep it on your phone, tablet or computer. Read it during Dashain, share it with family, send it to a friend who has always wondered who Durga is. Reading on a Kindle? It's on Amazon too.</p>
             <div class="actions">
               <a class="btn btn-primary" href="/download">{ICON_DL}Download the PDF</a>
-              <a class="btn btn-ghost" href="{KINDLE}" target="_blank" rel="noopener">{ICON_KINDLE}Get it on Kindle</a>
+              <a class="btn btn-ghost" href="/kindle">{ICON_KINDLE}Get it on Kindle</a>
             </div>
             <span class="small">14 chapters · images · mantras</span>
           </div>
@@ -348,7 +353,7 @@ download = f'''<!doctype html>
           <a class="btn btn-primary" id="dl-link" href="/she-who-is-nature.pdf" download="She-Who-Is-Nature-Bibek-Sharma-Chapagain.pdf">{ICON_DL}Download the PDF</a>
           <a class="btn btn-ghost" href="{BMC}" target="_blank" rel="noopener">{ICON_CUP}Buy me a coffee</a>
         </div>
-        <p>Reading on a Kindle? <a class="kindle" href="{KINDLE}" target="_blank" rel="noopener">Get the Kindle edition on Amazon.</a></p>
+        <p>Reading on a Kindle? <a class="kindle" href="/kindle">Get the Kindle edition on Amazon.</a></p>
         <p>If the book brings you something, a coffee helps me make the next one. Thank you for reading.</p>
         <p><a class="back" href="/">← Back to the book</a></p>
       </div>
@@ -382,6 +387,43 @@ download = f'''<!doctype html>
 </html>
 '''
 
+store_btns = "".join(
+    f'<a class="btn btn-ghost" href="{u}" target="_blank" rel="noopener">{ICON_KINDLE}{e(c)} <span class="small">{e(d)}</span></a>'
+    for c, d, u in KINDLE_STORES)
+kindle = f'''<!doctype html>
+<html lang="en">
+<head>
+  {head_common}
+  <title>Get it on Kindle · She Who Is Nature</title>
+  <meta name="description" content="Get the Kindle edition of She Who Is Nature: Durga and Her Nine Forms, by Bibek Sharma Chapagain.">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="{SITE_URL}/kindle">
+</head>
+<body class="dl-page">
+  <header class="topbar">
+    <div class="wrap">
+      <a class="mark" href="/" lang="sa" aria-label="She Who Is Nature, home">प्रकृतिरूपा</a>
+      <nav class="topnav" aria-label="Sections"><a class="link" href="/">Back to the book</a></nav>
+    </div>
+  </header>
+  <main class="dl-hero">
+    <div class="wrap dl-grid">
+      <img class="dl-face" src="/img/hero-split-face.webp" width="1200" height="1805" alt="The split face of Kalaratri and Mahagauri from the book's cover">
+      <div class="dl-text">
+        <p class="eyebrow">Kindle edition</p>
+        <h1>Choose your Amazon store.</h1>
+        <p>Kindle books can only be bought from the store that matches the country of your Amazon account. Pick yours below.</p>
+        <div class="actions">{store_btns}</div>
+        <p>Not listed? The free PDF works anywhere. <a class="kindle" href="/download">Download the PDF.</a></p>
+        <p><a class="back" href="/">← Back to the book</a></p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
+'''
+
 open(os.path.join(ROOT, "index.html"), "w").write(index)
+open(os.path.join(ROOT, "kindle.html"), "w").write(kindle)
 open(os.path.join(ROOT, "download.html"), "w").write(download)
 print("ok", len(index), len(download))
