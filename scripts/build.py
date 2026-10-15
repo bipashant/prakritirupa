@@ -116,6 +116,12 @@ for i, f in enumerate(FORMS):
 ICON_DL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>'
 ICON_CUP = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"/><path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 3c0 1.5 1 1.5 1 3M12 3c0 1.5 1 1.5 1 3"/></svg>'
 ICON_KINDLE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2.5" width="14" height="19" rx="2"/><path d="M8.5 7h7M8.5 10.5h7M8.5 14h4"/></svg>'
+def god_art(name):
+    """Inline one of the Trimurti line drawings from img/gods, scaled by its own height so the faces match."""
+    svg = open(os.path.join(ROOT, "img", "gods", f"{name}.svg")).read().strip()
+    h = re.search(r'viewBox="0 0 [\d.]+ ([\d.]+)"', svg).group(1)
+    return svg.replace("<svg ", f'<svg class="god-art" style="--h:{h}" ', 1)
+
 LOTUS_RULE = '<svg class="lotus-rule" viewBox="0 0 120 18" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M0 9h42M78 9h42"/><path d="M60 2c4 4 5 7 5 9s-2 4-5 5c-3-1-5-3-5-5s1-5 5-9z"/><path d="M52 7c-1 4 1 7 8 9M68 7c1 4-1 7-8 9"/><circle cx="60" cy="10" r="1.4" fill="currentColor"/></svg>'
 DIYA = '<svg class="diya" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6c3 4 4 7 4 9.5a4 4 0 0 1-8 0C20 13 21 10 24 6z" fill="currentColor" fill-opacity=".25"/><path d="M6 26c4 0 7 1 10 2.5 3 1.5 13 1.5 16 0 3-1.5 6-2.5 10-2.5-2 8-9 13-18 13S8 34 6 26z"/><path d="M18 42h12"/></svg>'
 
@@ -201,6 +207,20 @@ index = f'''<!doctype html>
         <p class="translit">Ya devi sarvabhuteshu shakti-rupena samsthita, namas tasyai namas tasyai namas tasyai namo namah.</p>
         <p class="meaning">To the Goddess who lives in every being as strength, I bow to her, I bow to her, again and again I bow.</p>
         <p class="source">From the Devi Mahatmya</p>
+      </div>
+    </section>
+
+    <section class="prelude" aria-labelledby="prelude-title">
+      <div class="wrap">
+        <p class="eyebrow">Before the nine forms</p>
+        <h2 id="prelude-title">A World Full of Gods</h2>
+        <p>Hindu tradition honours countless gods, of rivers and mountains, of sun and rain and strength. The idea underneath is simple: a god is anything that made you what you are. Water to drink. Soil to grow food. The sun that wakes you, the fire that warms you. So people learned to bow to them, the way you'd thank anyone who kept you alive.</p>
+        <ul class="trinity" aria-label="The three great movements">
+          <li>{god_art("brahma")}<strong>Brahma</strong><span>creates</span></li>
+          <li>{god_art("vishnu")}<strong>Vishnu</strong><span>sustains</span></li>
+          <li>{god_art("shiva")}<strong>Shiva</strong><span>lets end, to make way</span></li>
+        </ul>
+        <p>Someone who longs to sing bows to Saraswati. Someone who wants to grow strong and steady prays to Hanuman. They aren't asking for a gift from far away. They are waking that same energy in themselves. <em>Durga</em> is one of her best-loved faces.</p>
       </div>
     </section>
 
@@ -450,6 +470,8 @@ GLOSSARY = {
     "Shakti": "Divine power. Also a name for the Goddess herself.",
     "Raktabija": "A demon whose every drop of blood became another demon.",
     "Taraka": "A demon who could be defeated only by a son of Shiva.",
+    "Saraswati": "Goddess of music, learning and wisdom.",
+    "Hanuman": "The monkey god of strength and devotion, a loyal friend to Rama.",
     "Siddhi": "A perfection or mastery, earned after long practice.",
 }
 _SKIP = ("h1", "h2", "h3", "button", "a", "script", "style", "title", "dialog", "noscript")

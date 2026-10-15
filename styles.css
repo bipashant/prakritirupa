@@ -439,3 +439,22 @@ dialog.viewer::backdrop { background: rgba(19, 11, 12, .82); backdrop-filter: bl
 }
 .term:hover .tip, .term:focus .tip, .term:focus-within .tip { opacity: 1; visibility: visible; }
 @media (prefers-reduced-motion: reduce) { .term .tip { transition: none; } }
+
+/* ---------- prelude: A World Full of Gods, before chapter one ---------- */
+.prelude { text-align: center; padding-block: clamp(40px, 6vw, 72px); }
+.prelude .wrap { display: grid; justify-items: center; gap: 16px; }
+.prelude p { max-width: 58ch; }
+.prelude .eyebrow { color: var(--sindoor); }
+.prelude h2 { font-size: var(--t-xl); }
+.prelude p { color: var(--ink-soft); }
+.trinity {
+  margin: 14px 0; padding: 0; list-style: none;
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: start; gap: 22px clamp(8px, 4vw, 48px);
+  --god-size: clamp(112px, 33vw, 184px);
+}
+.trinity li { display: grid; grid-template-rows: var(--god-size) auto auto; justify-items: center; gap: 6px; text-align: center; }
+@media (max-width: 520px) { .trinity li { width: min-content; } }  /* labels wrap under the drawing so all three fit in one row */
+/* the Trimurti drawings share one scale (Brahma, the tallest, is 683 units) so their faces match */
+.trinity .god-art { height: calc(var(--h) / 683 * var(--god-size)); width: auto; align-self: end; color: var(--ink); }
+.trinity strong { font-family: var(--font-display); font-size: clamp(1.45rem, 1.1rem + 1.2vw, 1.9rem); line-height: 1.15; color: var(--ink); }
+.trinity li > span { font-size: var(--t-sm); letter-spacing: .02em; color: var(--ink-soft); }
