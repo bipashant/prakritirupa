@@ -418,3 +418,24 @@ dialog.viewer::backdrop { background: rgba(19, 11, 12, .82); backdrop-filter: bl
 .dl-text .back { font-size: var(--t-sm); color: rgba(245,239,227,.7); }
 .dl-text .kindle { color: var(--gold-soft); text-underline-offset: 3px; }
 .dl-text .kindle:hover { color: var(--pearl); }
+
+/* ---------- glossary tooltips on Sanskrit words and names ---------- */
+.term {
+  position: relative; cursor: help; border-radius: 2px;
+  text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-underline-offset: 4px;
+  text-decoration-color: rgba(163, 31, 26, .55);
+}
+.night-band .term { text-decoration-color: rgba(227, 201, 136, .6); }
+.term:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.term .tip {
+  position: absolute; z-index: 30; top: calc(100% + 8px); left: 50%;
+  width: max-content; max-width: min(250px, 72vw); padding: 9px 12px; border-radius: 8px;
+  transform: translateX(calc(-50% + var(--tx, 0px)));
+  background: var(--night); color: var(--pearl); border: 1px solid rgba(201, 160, 74, .5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  font: 400 var(--t-xs)/1.45 var(--font-body); letter-spacing: 0; text-transform: none; text-align: left;
+  text-decoration: none; font-style: normal; white-space: normal;
+  opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .15s ease;
+}
+.term:hover .tip, .term:focus .tip, .term:focus-within .tip { opacity: 1; visibility: visible; }
+@media (prefers-reduced-motion: reduce) { .term .tip { transition: none; } }

@@ -146,3 +146,20 @@
   });
   start();
 })();
+
+/* keep glossary tooltips inside the screen */
+(function () {
+  function place(ev) {
+    var term = ev.target.closest && ev.target.closest(".term");
+    if (!term) return;
+    var tip = term.querySelector(".tip");
+    if (!tip) return;
+    tip.style.setProperty("--tx", "0px");
+    var r = tip.getBoundingClientRect(), pad = 10, shift = 0;
+    if (r.left < pad) shift = pad - r.left;
+    else if (r.right > window.innerWidth - pad) shift = window.innerWidth - pad - r.right;
+    if (shift) tip.style.setProperty("--tx", Math.round(shift) + "px");
+  }
+  document.addEventListener("mouseover", place);
+  document.addEventListener("focusin", place);
+})();

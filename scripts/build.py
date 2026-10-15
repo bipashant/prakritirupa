@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Regenerates index.html and download.html from the content below.
 Run from anywhere: python3 scripts/build.py"""
-import html, json, os
+import html, json, os, re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SITE_URL = "https://prakritirupa.vercel.app"
@@ -423,6 +423,67 @@ kindle = f'''<!doctype html>
 </html>
 '''
 
+# Short plain-English notes for names and Sanskrit words, shown as tooltips on first use in each section.
+GLOSSARY = {
+    "Durga": "The Mother Goddess. Her name means “hard to reach,” like a fort high on a mountain.",
+    "Prakriti": "Sanskrit for nature: the living world, in all its moods.",
+    "Navaratri": "“Nine nights.” An autumn festival honouring the Goddess, one form each night.",
+    "Dashain": "Nepal's biggest festival. It is the same festival as Navaratri and Vijaya Dashami, and ends in victory on the tenth day.",
+    "Vijaya Dashami": "“Victory tenth.” The tenth day of the festival, when Durga's victory is celebrated.",
+    "Devi Mahatmya": "An old Sanskrit poem in praise of the Goddess, still recited during Dashain.",
+    "Devi Kavacham": "“Armor of the Goddess.” A short protective prayer that names the nine forms.",
+    "Brahma": "The creator god, one of the three great gods of the Hindu tradition.",
+    "Vishnu": "The god who keeps the world going, one of the three great gods.",
+    "Shiva": "The god of endings that make way for new beginnings, and Parvati's husband.",
+    "Parvati": "“She of the mountain.” Daughter of the Himalaya and wife of Shiva, and the Goddess in a human story.",
+    "Sati": "Shiva's first wife, who gave up her life. She is later born again as Parvati.",
+    "Indra": "King of the gods, ruler of heaven.",
+    "Skanda": "A young warrior god, son of Shiva and Parvati. Also called Kartikeya or Murugan.",
+    "Kartikeya": "Another name for Skanda, the young warrior god.",
+    "Murugan": "Another name for Skanda, loved especially in South India.",
+    "Krishna": "A beloved god, shown as a cowherd boy who plays the flute.",
+    "Mahishasura": "The shape-shifting buffalo demon who took over heaven.",
+    "Himavat": "The king of the mountains, father of Parvati. The Himalaya itself.",
+    "Ganga": "The Ganges, India's most sacred river, itself honoured as a goddess.",
+    "Yamuna": "A sacred river in northern India, beside the village where Krishna grew up.",
+    "Ardhanarishvara": "“The lord who is half woman.” Shiva shown half man, half woman, joined down the middle.",
+    "Shakti": "Divine power. Also a name for the Goddess herself.",
+    "Raktabija": "A demon whose every drop of blood became another demon.",
+    "Taraka": "A demon who could be defeated only by a son of Shiva.",
+    "Siddhi": "A perfection or mastery, earned after long practice.",
+}
+_SKIP = ("h1", "h2", "h3", "button", "a", "script", "style", "title", "dialog", "noscript")
+_RESET = re.compile(r'<(?:section|article|aside)\b|class="detail"')
+
+def add_tooltips(doc):
+    """Wrap glossary words in text (never in headings, links, buttons or attributes)."""
+    names = sorted(GLOSSARY, key=len, reverse=True)
+    word = re.compile(r'(?<![\w-])(' + "|".join(re.escape(n) for n in names) + r')(?![\w-])')
+    out, seen, skip, i = [], set(), 0, 0
+    for part in re.split(r'(<[^>]+>)', doc):
+        if part.startswith("<"):
+            m = re.match(r'<(/?)([a-zA-Z0-9]+)', part)
+            if m and m.group(2).lower() in _SKIP and not part.endswith("/>"):
+                skip += -1 if m.group(1) else 1
+                skip = max(skip, 0)
+            if _RESET.search(part):
+                seen = set()
+            out.append(part)
+        elif skip or not part.strip():
+            out.append(part)
+        else:
+            def wrap(mo):
+                n = mo.group(1)
+                if n in seen:
+                    return n
+                seen.add(n)
+                tip = e(GLOSSARY[n])
+                return (f'<span class="term" tabindex="0">{n}'
+                        f'<span class="tip" role="tooltip">{tip}</span></span>')
+            out.append(word.sub(wrap, part))
+    return "".join(out)
+
+index = add_tooltips(index)
 open(os.path.join(ROOT, "index.html"), "w").write(index)
 open(os.path.join(ROOT, "kindle.html"), "w").write(kindle)
 open(os.path.join(ROOT, "download.html"), "w").write(download)
