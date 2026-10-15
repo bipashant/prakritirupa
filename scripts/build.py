@@ -115,7 +115,9 @@ LOTUS_RULE = '<svg class="lotus-rule" viewBox="0 0 120 18" fill="none" stroke="c
 DIYA = '<svg class="diya" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6c3 4 4 7 4 9.5a4 4 0 0 1-8 0C20 13 21 10 24 6z" fill="currentColor" fill-opacity=".25"/><path d="M6 26c4 0 7 1 10 2.5 3 1.5 13 1.5 16 0 3-1.5 6-2.5 10-2.5-2 8-9 13-18 13S8 34 6 26z"/><path d="M18 42h12"/></svg>'
 
 VA = '''<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
-  <script defer src="/_vercel/insights/script.js"></script>'''
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>'''
 
 head_common = f'''<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
