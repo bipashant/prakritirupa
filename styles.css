@@ -416,8 +416,8 @@ dialog.viewer::backdrop { background: rgba(19, 11, 12, .82); backdrop-filter: bl
 @media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
 .dl-text .actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .dl-text .back { font-size: var(--t-sm); color: rgba(245,239,227,.7); }
-.dl-text .kindle { color: var(--gold-soft); text-underline-offset: 3px; }
-.dl-text .kindle:hover { color: var(--pearl); }
+.dl-text .alink { color: var(--gold-soft); text-underline-offset: 3px; }
+.dl-text .alink:hover { color: var(--pearl); }
 
 /* ---------- glossary tooltips on Sanskrit words and names ---------- */
 .term {
@@ -443,10 +443,10 @@ dialog.viewer::backdrop { background: rgba(19, 11, 12, .82); backdrop-filter: bl
 /* ---------- prelude: A World Full of Gods, before chapter one ---------- */
 .prelude { text-align: center; padding-block: clamp(40px, 6vw, 72px); }
 .prelude .wrap { display: grid; justify-items: center; gap: 16px; }
-.prelude p { max-width: 58ch; }
+.prelude p { width: 100%; max-width: 74ch; text-wrap: pretty; }  /* wider than the 62ch --measure used elsewhere */
 .prelude .eyebrow { color: var(--sindoor); }
-.prelude h2 { font-size: var(--t-xl); }
-.prelude p { color: var(--ink-soft); }
+.prelude h2 { font-size: var(--t-2xl); color: var(--ink); }
+.prelude p { color: var(--ink); }
 .trinity {
   margin: 14px 0; padding: 0; list-style: none;
   display: flex; flex-wrap: wrap; justify-content: center; align-items: start; gap: 22px clamp(8px, 4vw, 48px);
@@ -458,3 +458,4 @@ dialog.viewer::backdrop { background: rgba(19, 11, 12, .82); backdrop-filter: bl
 .trinity .god-art { height: calc(var(--h) / 683 * var(--god-size)); width: auto; align-self: end; color: var(--ink); }
 .trinity strong { font-family: var(--font-display); font-size: clamp(1.45rem, 1.1rem + 1.2vw, 1.9rem); line-height: 1.15; color: var(--ink); }
 .trinity li > span { font-size: var(--t-sm); letter-spacing: .02em; color: var(--ink-soft); }
+

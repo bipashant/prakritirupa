@@ -6,12 +6,16 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SITE_URL = "https://prakritirupa.vercel.app"
 BMC = "https://buymeacoffee.com/bipashant"
-KINDLE = "https://www.amazon.com/dp/B0HN3JPRBT"
-# Kindle books are sold per country store: a reader must use the store that matches their Amazon account.
-KINDLE_STORES = [
-    ("United States", "Amazon.com", "https://www.amazon.com/dp/B0HN3JPRBT"),
-    ("Australia", "Amazon.com.au", "https://www.amazon.com.au/dp/B0HN3JPRBT"),
+# One book id, sold in a separate Amazon store per country. The reader picks paperback or Kindle on Amazon itself.
+ASIN = "B0HN3GS53Z"
+AMAZON_STORES = [  # (country code, name, Amazon domain)
+    ("US", "United States", "amazon.com"), ("GB", "United Kingdom", "amazon.co.uk"), ("AU", "Australia", "amazon.com.au"),
+    ("CA", "Canada", "amazon.ca"), ("IE", "Ireland", "amazon.ie"), ("DE", "Germany", "amazon.de"),
+    ("FR", "France", "amazon.fr"), ("ES", "Spain", "amazon.es"), ("IT", "Italy", "amazon.it"),
+    ("NL", "Netherlands", "amazon.nl"), ("BE", "Belgium", "amazon.com.be"), ("PL", "Poland", "amazon.pl"),
+    ("SE", "Sweden", "amazon.se"), ("JP", "Japan", "amazon.co.jp"),
 ]
+AMAZON_US = f"https://www.amazon.com/dp/{ASIN}"
 
 FORMS = [
     dict(slug="shailaputri", night="१", day="Night 1", name="Shailaputri", deva="शैलपुत्री",
@@ -115,7 +119,7 @@ for i, f in enumerate(FORMS):
 
 ICON_DL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>'
 ICON_CUP = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"/><path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 3c0 1.5 1 1.5 1 3M12 3c0 1.5 1 1.5 1 3"/></svg>'
-ICON_KINDLE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2.5" width="14" height="19" rx="2"/><path d="M8.5 7h7M8.5 10.5h7M8.5 14h4"/></svg>'
+ICON_BOOK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5C5.6 4.4 9 4.4 12 6c3-1.6 6.4-1.6 9-.5V19c-2.6-1.1-6-1.1-9 .5-3-1.6-6.4-1.6-9-.5z"/><path d="M12 6v13.5"/></svg>'
 def god_art(name):
     """Inline one of the Trimurti line drawings from img/gods, scaled by its own height so the faces match."""
     svg = open(os.path.join(ROOT, "img", "gods", f"{name}.svg")).read().strip()
@@ -158,7 +162,7 @@ index = f'''<!doctype html>
   <meta property="og:image:alt" content="The cover face of She Who Is Nature: half Kalaratri in fire, half Mahagauri in pearls">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preload" href="/img/hero-split-face.webp" as="image" type="image/webp">
-  <script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@type":"Book","name":"She Who Is Nature","alternateName":"प्रकृतिरूपा","description":DESC,"author":{"@type":"Person","name":"Bibek Sharma Chapagain"},"illustrator":{"@type":"Person","name":"Bibek Sharma Chapagain"},"inLanguage":"en","image":SITE_URL+"/img/og.jpg","url":SITE_URL+"/","workExample":{"@type":"Book","name":"She Who Is Nature (Kindle edition)","bookFormat":"https://schema.org/EBook","url":KINDLE}}, ensure_ascii=False)}</script>
+  <script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@type":"Book","name":"She Who Is Nature","alternateName":"प्रकृतिरूपा","description":DESC,"author":{"@type":"Person","name":"Bibek Sharma Chapagain"},"illustrator":{"@type":"Person","name":"Bibek Sharma Chapagain"},"inLanguage":"en","image":SITE_URL+"/img/og.jpg","url":SITE_URL+"/","workExample":{"@type":"Book","name":"She Who Is Nature (Paperback)","bookFormat":"https://schema.org/Paperback","url":AMAZON_US}}, ensure_ascii=False)}</script>
 </head>
 <body>
   <header class="topbar">
@@ -188,7 +192,7 @@ index = f'''<!doctype html>
           <p class="by">By Bibek Sharma Chapagain</p>
           <div class="hero-cta">
             <a class="btn btn-primary" href="/download">{ICON_DL}Download the book</a>
-            <a class="btn btn-ghost" href="/kindle">{ICON_KINDLE}Get it on Kindle</a>
+            <a class="btn btn-ghost" href="/amazon">{ICON_BOOK}Get it on Amazon</a>
           </div>
           <ul class="hero-facts">
             <li>14 chapters</li>
@@ -215,6 +219,7 @@ index = f'''<!doctype html>
         <p class="eyebrow">Before the nine forms</p>
         <h2 id="prelude-title">A World Full of Gods</h2>
         <p>Hindu tradition honours countless gods, of rivers and mountains, of sun and rain and strength. The idea underneath is simple: a god is anything that made you what you are. Water to drink. Soil to grow food. The sun that wakes you, the fire that warms you. So people learned to bow to them, the way you'd thank anyone who kept you alive.</p>
+        <p>Among them, three stand behind all the rest, one for each great movement. Every seed, every season and every life is born, lives and returns.</p>
         <ul class="trinity" aria-label="The three great movements">
           <li>{god_art("brahma")}<strong>Brahma</strong><span>creates</span></li>
           <li>{god_art("vishnu")}<strong>Vishnu</strong><span>sustains</span></li>
@@ -302,10 +307,10 @@ index = f'''<!doctype html>
           <div class="offer-main">
             <p class="eyebrow">Read it free</p>
             <h2 id="dl-title">Take her home with you.</h2>
-            <p>Download the full book as a PDF and keep it on your phone, tablet or computer. Read it during Dashain, share it with family, send it to a friend who has always wondered who Durga is. Reading on a Kindle? It's on Amazon too.</p>
+            <p>Download the full book as a PDF and keep it on your phone, tablet or computer. Read it during Dashain, share it with family, send it to a friend who has always wondered who Durga is. Prefer a printed copy? It's on Amazon too.</p>
             <div class="actions">
               <a class="btn btn-primary" href="/download">{ICON_DL}Download the PDF</a>
-              <a class="btn btn-ghost" href="/kindle">{ICON_KINDLE}Get it on Kindle</a>
+              <a class="btn btn-ghost" href="/amazon">{ICON_BOOK}Get it on Amazon</a>
             </div>
             <span class="small">14 chapters · images · mantras</span>
           </div>
@@ -373,7 +378,7 @@ download = f'''<!doctype html>
           <a class="btn btn-primary" id="dl-link" href="/she-who-is-nature.pdf" download="She-Who-Is-Nature-Bibek-Sharma-Chapagain.pdf">{ICON_DL}Download the PDF</a>
           <a class="btn btn-ghost" href="{BMC}" target="_blank" rel="noopener">{ICON_CUP}Buy me a coffee</a>
         </div>
-        <p>Reading on a Kindle? <a class="kindle" href="/kindle">Get the Kindle edition on Amazon.</a></p>
+        <p>Prefer a printed copy? <a class="alink" href="/amazon">Get it on Amazon.</a></p>
         <p>If the book brings you something, a coffee helps me make the next one. Thank you for reading.</p>
         <p><a class="back" href="/">← Back to the book</a></p>
       </div>
@@ -407,17 +412,53 @@ download = f'''<!doctype html>
 </html>
 '''
 
-store_btns = "".join(
-    f'<a class="btn btn-ghost" href="{u}" target="_blank" rel="noopener">{ICON_KINDLE}{e(c)} <span class="small">{e(d)}</span></a>'
-    for c, d, u in KINDLE_STORES)
-kindle = f'''<!doctype html>
+store_buttons = "".join(
+    f'<a class="btn btn-ghost" data-country="{c}" href="https://www.{d}/dp/{ASIN}" target="_blank" rel="noopener">{ICON_BOOK}{e(n)}</a>'
+    for c, n, d in AMAZON_STORES)
+AMAZON_JS = '''(function () {
+  // Where the reader probably is: their timezone first, then their language setting.
+  var BY_ZONE = {"Australia/": "AU", "Europe/London": "GB", "Europe/Dublin": "IE", "Europe/Berlin": "DE", "Europe/Vienna": "DE",
+    "Europe/Zurich": "DE", "Europe/Paris": "FR", "Europe/Madrid": "ES", "Europe/Rome": "IT", "Europe/Amsterdam": "NL",
+    "Europe/Warsaw": "PL", "Europe/Stockholm": "SE", "Europe/Brussels": "BE", "Asia/Tokyo": "JP",
+    "America/Toronto": "CA", "America/Vancouver": "CA", "America/Edmonton": "CA", "America/Winnipeg": "CA", "America/Halifax": "CA",
+    "America/St_Johns": "CA", "America/Regina": "CA", "America/Montreal": "CA",
+    "America/New_York": "US", "America/Chicago": "US", "America/Denver": "US", "America/Los_Angeles": "US", "America/Phoenix": "US",
+    "America/Anchorage": "US", "America/Detroit": "US", "America/Boise": "US", "America/Indiana/": "US", "America/Kentucky/": "US",
+    "Pacific/Honolulu": "US"};
+  var BY_REGION = {US: "US", GB: "GB", AU: "AU", CA: "CA", IE: "IE", DE: "DE", AT: "DE", CH: "DE", FR: "FR", ES: "ES",
+    IT: "IT", NL: "NL", BE: "BE", PL: "PL", SE: "SE", JP: "JP"};
+  var zone = "", code = "";
+  try { zone = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
+  Object.keys(BY_ZONE).some(function (k) {
+    if (k.slice(-1) === "/" ? zone.indexOf(k) === 0 : zone === k) { code = BY_ZONE[k]; return true; }
+  });
+  if (!code) {
+    var m = (navigator.language || "").match(/-([A-Za-z]{2})$/);
+    code = (m && BY_REGION[m[1].toUpperCase()]) || "";
+  }
+  var link = code && document.querySelector('a[data-country="' + code + '"]');
+  if (!link) return;
+  link.classList.remove("btn-ghost"); link.classList.add("btn-primary");
+  var status = document.getElementById("amz-status"), timer;
+  status.innerHTML = "";
+  status.appendChild(document.createTextNode("Taking you to Amazon " + link.textContent + "… "));
+  var stay = document.createElement("a");
+  stay.href = "#"; stay.textContent = "Stay here"; stay.className = "alink";
+  stay.addEventListener("click", function (ev) {
+    ev.preventDefault(); clearTimeout(timer);
+    status.textContent = "Your store is highlighted. Not your country? Pick another below.";
+  });
+  status.appendChild(stay);
+  timer = setTimeout(function () { location.replace(link.href); }, 1600);   // replace, so Back returns to the book
+})();'''
+amazon = f'''<!doctype html>
 <html lang="en">
 <head>
   {head_common}
-  <title>Get it on Kindle · She Who Is Nature</title>
-  <meta name="description" content="Get the Kindle edition of She Who Is Nature: Durga and Her Nine Forms, by Bibek Sharma Chapagain.">
+  <title>Get it on Amazon · She Who Is Nature</title>
+  <meta name="description" content="Buy She Who Is Nature: Durga and Her Nine Forms, by Bibek Sharma Chapagain, on Amazon.">
   <meta name="robots" content="noindex">
-  <link rel="canonical" href="{SITE_URL}/kindle">
+  <link rel="canonical" href="{SITE_URL}/amazon">
 </head>
 <body class="dl-page">
   <header class="topbar">
@@ -430,15 +471,16 @@ kindle = f'''<!doctype html>
     <div class="wrap dl-grid">
       <img class="dl-face" src="/img/hero-split-face.webp" width="1200" height="1805" alt="The split face of Kalaratri and Mahagauri from the book's cover">
       <div class="dl-text">
-        <p class="eyebrow">Kindle edition</p>
-        <h1>Choose your Amazon store.</h1>
-        <p>Kindle books can only be bought from the store that matches the country of your Amazon account. Pick yours below.</p>
-        <div class="actions">{store_btns}</div>
-        <p>Not listed? The free PDF works anywhere. <a class="kindle" href="/download">Download the PDF.</a></p>
+        <p class="eyebrow">On Amazon</p>
+        <h1>Get it on Amazon.</h1>
+        <p id="amz-status" role="status">Amazon has a separate store for each country. Pick yours below.</p>
+        <div class="actions">{store_buttons}</div>
+        <p>Your country not listed? The free PDF works anywhere. <a class="alink" href="/download">Download the PDF.</a></p>
         <p><a class="back" href="/">← Back to the book</a></p>
       </div>
     </div>
   </main>
+  <script>{AMAZON_JS}</script>
 </body>
 </html>
 '''
@@ -507,6 +549,6 @@ def add_tooltips(doc):
 
 index = add_tooltips(index)
 open(os.path.join(ROOT, "index.html"), "w").write(index)
-open(os.path.join(ROOT, "kindle.html"), "w").write(kindle)
+open(os.path.join(ROOT, "amazon.html"), "w").write(amazon)
 open(os.path.join(ROOT, "download.html"), "w").write(download)
 print("ok", len(index), len(download))
