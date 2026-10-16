@@ -12,6 +12,12 @@
   <script defer src="/_vercel/insights/script.js"></script>
   <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once unregister identify reset opt_in_capturing opt_out_capturing has_opted_out_capturing set_config get_distinct_id".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  if (location.hostname === 'prakritirupa.vercel.app') {  // production only: never on localhost, a LAN address or a preview deploy
+    posthog.init('phc_mDrcM5aYQpW4X6TyVXyZVUUmvGkrd7mLy9faixgEb9qn', { api_host: 'https://us.i.posthog.com', defaults: '2025-05-24', person_profiles: 'identified_only' });
+  }
+  </script>
   <title>Get it on Amazon · She Who Is Nature</title>
   <meta name="description" content="Buy She Who Is Nature: Durga and Her Nine Forms, by Bibek Sharma Chapagain, on Amazon.">
   <meta name="robots" content="noindex">

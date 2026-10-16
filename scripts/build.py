@@ -134,6 +134,15 @@ VA = '''<script>window.va = window.va || function () { (window.vaq = window.vaq 
   <script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
   <script defer src="/_vercel/speed-insights/script.js"></script>'''
 
+# PostHog product analytics (US Cloud). The project token is a write-only public key, safe to ship in the page.
+POSTHOG_TOKEN = "phc_mDrcM5aYQpW4X6TyVXyZVUUmvGkrd7mLy9faixgEb9qn"
+POSTHOG = '''<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once unregister identify reset opt_in_capturing opt_out_capturing has_opted_out_capturing set_config get_distinct_id".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  if (location.hostname === '__HOST__') {  // production only: never on localhost, a LAN address or a preview deploy
+    posthog.init('__TOKEN__', { api_host: 'https://us.i.posthog.com', defaults: '2025-05-24', person_profiles: 'identified_only' });
+  }
+  </script>'''.replace("__TOKEN__", POSTHOG_TOKEN).replace("__HOST__", SITE_URL.split("//")[1].split("/")[0])
+
 head_common = f'''<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#130B0C">
@@ -141,7 +150,8 @@ head_common = f'''<meta charset="utf-8">
   <link rel="preload" href="/fonts/rozha-one-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/spectral-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/styles.css">
-  {VA}'''
+  {VA}
+  {POSTHOG}'''
 
 DESC = "An illustrated book by Bibek Sharma Chapagain on Durga, the Mother Goddess as nature, and the forms she takes across the nine nights of Navaratri and Dashain. Images, stories and Sanskrit mantras with meaning."
 
@@ -523,9 +533,15 @@ def add_tooltips(doc):
     """Wrap glossary words in text (never in headings, links, buttons or attributes)."""
     names = sorted(GLOSSARY, key=len, reverse=True)
     word = re.compile(r'(?<![\w-])(' + "|".join(re.escape(n) for n in names) + r')(?![\w-])')
-    out, seen, skip, i = [], set(), 0, 0
-    for part in re.split(r'(<[^>]+>)', doc):
-        if part.startswith("<"):
+    out, seen, skip = [], set(), 0
+    # Script and style blocks hold code, not prose (and may contain "<" that is not a tag), so pass them through untouched.
+    chunks = re.split(r'(<(?:script|style)\b.*?</(?:script|style)>)', doc, flags=re.S | re.I)
+    parts = [x for k, c in enumerate(chunks) for x in ([c] if k % 2 else re.split(r'(<[^>]+>)', c))]
+    protected = {id(c) for k, c in enumerate(chunks) if k % 2}
+    for part in parts:
+        if id(part) in protected:
+            out.append(part)
+        elif part.startswith("<"):
             m = re.match(r'<(/?)([a-zA-Z0-9]+)', part)
             if m and m.group(2).lower() in _SKIP and not part.endswith("/>"):
                 skip += -1 if m.group(1) else 1
